@@ -3,14 +3,14 @@ import Icon from './Icon.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import type { iconPaths } from './IconPaths';
 
-/** Main menu items */
+/** Elementos del menu p/pal */
 const textLinks: { label: string; href: string }[] = [
 	{ label: 'Home', href: '/' },
 	{ label: 'Trabajo', href: '/work/' },
 	{ label: 'Acerca de', href: '/about/' },
 ];
 
-/** Icon links to social media — edit these with links to your profiles! */
+/** Enlaces de iconos a redes sociales, según convenga! */
 const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
 	// { label: 'Twitter', href: 'https://twitter.com/me', icon: 'twitter-logo' },
 	//{ label: 'Twitch', href: 'https://twitch.tv/me', icon: 'twitch-logo' },
@@ -122,7 +122,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		constructor() {
 			super();
 
-			// Inject menu toggle button when JS runs.
+			// Botón de alternacia del menu                                                                                 
 			this.appendChild(this.querySelector('template')!.content.cloneNode(true));
 			const btn = this.querySelector('button')!;
 
@@ -132,16 +132,16 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 			// Add "menu-content" class in JS to avoid covering content in non-JS browsers.
 			menu.classList.add('menu-content');
 
-			/** Set whether the menu is currently expanded or collapsed. */
+			/** xa saber si el menu esta expandido */
 			const setExpanded = (expand: boolean) => {
 				btn.setAttribute('aria-expanded', expand ? 'true' : 'false');
 				menu.hidden = !expand;
 			};
 
-			// Toggle menu visibility when the menu button is clicked.
+			// xa alternar la visibilidad del menu cuando demos click.
 			btn.addEventListener('click', () => setExpanded(menu.hidden));
 
-			// Hide menu button for large screens.
+			// oculatr boton de menu en pantallas grandes.
 			const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
 				setExpanded(e.matches);
 				btn.hidden = e.matches;
